@@ -16,10 +16,10 @@ def in_virtual_env() -> None:
         print()
         message = (
             "WARNING: You're in the global environment!"
-            "\nThe machines can see everything you install.\nTo enter the"
+            "\nThe machines can see everything you install.\n\nTo enter the"
             "construct, run:\npython -m venv matrix_env\n"
             "source matrix_env/bin/activate # On Unix\n"
-            "matrix_env\\Scripts\\activate # On Windows\n"
+            "matrix_env\\Scripts\\activate # On Windows\n\n"
             "Then run this program again."
         )
         print(message)
