@@ -1,5 +1,3 @@
-import importlib
-import sys
 from importlib import import_module
 
 
@@ -154,17 +152,17 @@ def version_compare() -> None:
 
 def matrix_visualizer(data_frame) -> None:
     try:
-        plt = importlib.import_module("matplotlib.pyplot")
+        import matplotlib  # type: ignore[import-not-found]
 
         file_name = "matrix_analysis.png"
-        plt.figure(figsize=(10, 5))
-        plt.plot(data_frame["time"], data_frame["signal"])
-        plt.title("Matrix Signal Analysis")
-        plt.xlabel("Time")
-        plt.ylabel("Signal")
-        plt.grid(True)
-        plt.savefig(file_name)
-        plt.close()
+        matplotlib.figure(figsize=(10, 5))
+        matplotlib.plot(data_frame["time"], data_frame["signal"])
+        matplotlib.title("Matrix Signal Analysis")
+        matplotlib.xlabel("Time")
+        matplotlib.ylabel("Signal")
+        matplotlib.grid(True)
+        matplotlib.savefig(file_name)
+        matplotlib.close()
         print("Analysis complete!\n"
               f"Results saved to: {file_name}")
     except Exception as e:
@@ -174,7 +172,7 @@ def matrix_visualizer(data_frame) -> None:
 def load_matrix() -> None:
     try:
         import numpy
-        import pandas
+        import pandas  # type: ignore[import-untyped]
         signal = numpy.random.rand(1000)
         time = numpy.arange(1000)
         data_frame = pandas.DataFrame({"time": time, "signal": signal})
@@ -191,7 +189,9 @@ def loading() -> None:
           "Checking dependencies:\n")
     if check_dependency():
         load_matrix()
-    version_compare()
+    show_version: bool = False
+    if show_version:
+        version_compare()
     print()
     print()
 

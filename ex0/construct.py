@@ -17,7 +17,7 @@ def in_virtual_env() -> None:
         message = (
             "WARNING: You're in the global environment!"
             "\nThe machines can see everything you install.\n\nTo enter the"
-            "construct, run:\npython -m venv matrix_env\n"
+            " construct, run:\npython3 -m venv matrix_env\n"
             "source matrix_env/bin/activate # On Unix\n"
             "matrix_env\\Scripts\\activate # On Windows\n\n"
             "Then run this program again."
@@ -34,12 +34,11 @@ def in_virtual_env() -> None:
         message = (
             "SUCCESS: You're in an isolated environment!\n"
             "Safe to install packages without affecting\nthe global system.\n"
-            "Package installation path:\n"
+            "Package installation path:"
         )
         print(message)
         site_packages = site.getsitepackages()
-        for path in site_packages:
-            print(path)
+        print(site_packages[0])
 
 
 def main() -> None:
